@@ -4,6 +4,9 @@ public class CompletedMatrix implements Matrix {
 
     // TODO: Stop empty Matrices from being created
     public CompletedMatrix(int[][] elements) {
+        if (elements == null) {
+            throw new IllegalArgumentException("Input Elements Can Not Be Empty");
+        }
         this.elements = elements;
     }
 
@@ -24,8 +27,8 @@ public class CompletedMatrix implements Matrix {
 
     @Override
     public Matrix scale(int scalar) {
-        int rows = elements.length;
-        int columns = elements[0].length;
+        int rows = elements.length; // Could use getRows
+        int columns = elements[0].length; // Could use getColumns
 
         int[][] elementScaled = new int[rows][columns];
 
@@ -39,7 +42,22 @@ public class CompletedMatrix implements Matrix {
 
     @Override
     public Matrix plus(Matrix other) {
-        return null;
+        // Check if it exists
+        // Check if the dimensions match
+
+        if (other == null || other.getRows() != getRows() || other.getColumns() != getColumns()) {
+            throw new IllegalArgumentException("Matrices Dimensions Must Match");
+        }
+
+        int[][] summedMatrix = new int[getRows()][getColumns()];
+
+        for (int row = 0; row < getRows(); row++) {
+            for (int column = 0; column < getColumns(); column++) {
+                summedMatrix[row][column] = elements[row][column] + other.getElement(row,column);
+            }
+        }
+
+        return new CompletedMatrix(summedMatrix);
     }
 
     @Override
@@ -49,6 +67,12 @@ public class CompletedMatrix implements Matrix {
 
     @Override
     public Matrix multiply(Matrix other) {
+        return null;
+    }
+
+    public boolean equals(Object other) { return false;}
+
+    public String toString(){
         return null;
     }
 }

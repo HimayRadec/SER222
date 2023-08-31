@@ -1,20 +1,26 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
-
-        int matrixElements[][] = {
-                {1,2,3},
-                {4,5,6,6},
-                {7,8,9}
+        int[][] data1 = {
+                {1, 2},
+                {3, 4}
         };
 
-        CompletedMatrix matrix = new CompletedMatrix(matrixElements);
+        int[][] data2 = {
+                {5, 6}
+        };
 
-        int element = matrix.getElement(1,1);
-        int scaledElement = matrixElements.scale(3);
+        Matrix matrix1 = new CompletedMatrix(data1);
+        Matrix matrix2 = new CompletedMatrix(data2);
 
-        System.out.println("Element at (1, 1) is " + element);
+        Matrix resultMatrix = matrix1.plus(matrix2);
 
-        System.out.println("Scaled element at (1,1) is");
+        System.out.println("Matrix 1:");
+        System.out.println(matrix1.getElement(0,0));
+
+        System.out.println("Matrix 2:");
+        System.out.println(matrix2);
+
+        System.out.println("Result Matrix:");
+        System.out.println(resultMatrix.getElement(0,0));
     }
 }
