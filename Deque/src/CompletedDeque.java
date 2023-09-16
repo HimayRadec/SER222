@@ -152,16 +152,16 @@ public class CompletedDeque<Item> implements Deque<Item> {
         StringBuilder sb = new StringBuilder();
 
         // This will track the current node we are on as we iterate through the loop
-        Node<Item> node = front;
+        Node<Item> node = back;
 
         while (node != null) {
             sb.append(node.data);
 
             // check if is the last node and add some space for better formatting
-            if (node.next != null) {
+            if (node.prev != null) {
                 sb.append(" ");
             }
-            node = node.next;
+            node = node.prev;
         }
 
         return sb.toString();
